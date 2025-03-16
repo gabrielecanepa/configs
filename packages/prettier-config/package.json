@@ -23,11 +23,14 @@
     "typecheck": "tsc --noEmit && tsup --silent",
     "lint": "prettier --check .",
     "lint:fix": "prettier --write .",
-    "check": "pnpm typecheck && pnpm lint"
+    "check": "pnpm typecheck && pnpm lint",
+    "release": "release-it"
   },
   "devDependencies": {
+    "@release-it/bumper": "catalog:",
     "prettier": "catalog:",
     "prettier-plugin-tailwindcss": "^0.6.11",
+    "release-it": "catalog:",
     "tsup": "catalog:",
     "typescript": "catalog:"
   }

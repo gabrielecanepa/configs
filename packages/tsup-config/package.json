@@ -18,12 +18,15 @@
     "lint": "prettier --check .",
     "lint:fix": "prettier --write .",
     "check": "pnpm typecheck && pnpm lint",
-    "check:fix": "pnpm typecheck && pnpm lint:fix"
+    "check:fix": "pnpm typecheck && pnpm lint:fix",
+    "release": "release-it"
   },
   "devDependencies": {
     "@guello/prettier-config": "workspace:^",
     "@guello/tsconfig": "workspace:^",
+    "@release-it/bumper": "catalog:",
     "prettier": "catalog:",
+    "release-it": "catalog:",
     "tsup": "catalog:",
     "typescript": "catalog:"
   }

@@ -103,7 +103,7 @@ const eslintConfig = (options: EslintConfigOptions = {}): Linter.Config[] => {
       eslint.configs.recommended,
       ...turboConfig,
       {
-        name: '@guello/base',
+        name: '@guello/eslint-config/base',
         files,
         plugins: {
           '@stylistic': stylisticPlugin,
@@ -285,7 +285,7 @@ const eslintConfig = (options: EslintConfigOptions = {}): Linter.Config[] => {
             typeCheck === true ? typescriptConfigs.recommendedTypeChecked : {},
             typeCheck === 'strict' ? typescriptConfigs.strictTypeChecked : {},
             {
-              name: '@guello/ts',
+              name: '@guello/eslint-config/ts',
               languageOptions: {
                 parserOptions: {
                   ecmaFeatures: {
@@ -379,7 +379,7 @@ const eslintConfig = (options: EslintConfigOptions = {}): Linter.Config[] => {
               : {},
             {
               files: ['**/*.d.ts', '**/types.ts'],
-              name: '@guello/dts',
+              name: '@guello/eslint-config/dts',
               rules: {
                 'max-lines': RuleSeverity.Off,
               },
@@ -387,7 +387,7 @@ const eslintConfig = (options: EslintConfigOptions = {}): Linter.Config[] => {
           )),
       react
         ? {
-            name: '@guello/react',
+            name: '@guello/eslint-config/react',
             files: jsxFiles,
             plugins: {
               plugins: {
@@ -424,7 +424,7 @@ const eslintConfig = (options: EslintConfigOptions = {}): Linter.Config[] => {
           }
         : {},
       {
-        name: '@guello/configs',
+        name: '@guello/eslint-config/configs',
         files: configFiles,
         rules: {
           'no-restricted-imports': RuleSeverity.Off,
@@ -438,7 +438,7 @@ const eslintConfig = (options: EslintConfigOptions = {}): Linter.Config[] => {
       pandaCss
         ? {
             files: ['panda.config.[jt]s', ...files],
-            name: '@guello/pandacss',
+            name: '@guello/eslint-config/pandacss',
             plugins: {
               '@pandacss': pandaCssPlugin,
             },
@@ -461,7 +461,7 @@ const eslintConfig = (options: EslintConfigOptions = {}): Linter.Config[] => {
         ? [
             {
               files: prettierFiles,
-              name: '@guello/prettier',
+              name: '@guello/eslint-config/prettier',
               plugins: {
                 prettier: prettierPlugin,
               },
@@ -478,7 +478,7 @@ const eslintConfig = (options: EslintConfigOptions = {}): Linter.Config[] => {
         : []),
       tailwindCss
         ? {
-            name: '@guello/tailwindcss',
+            name: '@guello/eslint-config/tailwindcss',
             files,
             languageOptions: react
               ? {
@@ -494,7 +494,7 @@ const eslintConfig = (options: EslintConfigOptions = {}): Linter.Config[] => {
           }
         : {},
       {
-        name: '@guello/overrides',
+        name: '@guello/eslint-config/overrides',
         files,
         rules: {
           'arrow-body-style': [RuleSeverity.Error, 'as-needed'],

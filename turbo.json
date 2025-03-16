@@ -26,6 +26,11 @@
     },
     "check": {
       "dependsOn": ["^check"]
+    },
+    "release": {
+      "dependsOn": ["^release"],
+      "persistent": false,
+      "cache": false
     }
   }
 }

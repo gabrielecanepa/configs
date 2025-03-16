@@ -1,13 +1,9 @@
-import { readdirSync } from 'node:fs'
-
 import { RuleConfigSeverity, type UserConfig } from '@commitlint/types'
 
-const SCOPES = ['deps', 'deps-dev', 'infra', 'security']
+import { workspaces } from './package.json'
 
-const packages = readdirSync('./packages', { withFileTypes: true })
-  .filter(dir => dir.isDirectory())
-  .map(dir => dir.name)
-  .flat()
+const SCOPES = ['deps', 'deps-dev', 'infra', 'security']
+const packages = workspaces.map(workspace => workspace.replace('packages/', ''))
 
 export default {
   defaultIgnores: true,

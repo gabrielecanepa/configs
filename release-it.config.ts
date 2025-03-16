@@ -17,6 +17,7 @@ export default {
     push: true,
     pushArgs: ['--follow-tags', '--no-verify'],
     requireBranch: 'main',
+    requireCleanWorkingDir: false,
     tagName: 'v${version}',
   },
   github: {
