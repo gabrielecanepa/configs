@@ -1,12 +1,5 @@
-import guelloConfig from '@guello/eslint-config'
+import eslintConfig from '@guello/eslint-config'
 
-export default guelloConfig({
+export default eslintConfig({
   ignores: ['apps', 'packages'],
-  overrides: [
-    {
-      rules: {
-        'no-template-curly-in-string': 0,
-      },
-    },
-  ],
 })

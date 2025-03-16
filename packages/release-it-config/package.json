@@ -1,5 +1,5 @@
 {
-  "name": "@guello/prettier-config",
+  "name": "@guello/release-it-config",
   "version": "0.0.0",
   "type": "module",
   "exports": {
@@ -8,15 +8,9 @@
       "import": "./dist/index.js",
       "require": "./dist/index.cjs",
       "default": "./dist/index.js"
-    },
-    "./tailwindcss": {
-      "types": "./dist/tailwindcss.d.ts",
-      "import": "./dist/tailwindcss.js",
-      "require": "./dist/tailwindcss.cjs",
-      "default": "./dist/tailwindcss.js"
     }
   },
-  "prettier": "./dist/index.cjs",
+  "prettier": "@guello/prettier-config",
   "scripts": {
     "build": "tsup",
     "build:watch": "tsup --watch",
@@ -24,13 +18,15 @@
     "lint": "prettier --check .",
     "lint:fix": "prettier --write .",
     "check": "pnpm typecheck && pnpm lint",
+    "check:fix": "pnpm typecheck && pnpm lint:fix",
     "release": "release-it"
+  },
+  "dependencies": {
+    "@repo/utils": "workspace:^"
   },
   "devDependencies": {
     "@release-it/bumper": "catalog:",
-    "@types/node": "catalog:",
     "prettier": "catalog:",
-    "prettier-plugin-tailwindcss": "^0.6.11",
     "release-it": "catalog:",
     "tsup": "catalog:",
     "typescript": "catalog:"

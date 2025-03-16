@@ -1,6 +1,6 @@
 {
   "name": "@guello/configs",
-  "description": "My configurations for popular linting and styling tools",
+  "description": "Shared configurations for popular linting and styling tools",
   "version": "0.0.0",
   "homepage": "https://github.com/gabrielecanepa/configs",
   "repository": {
@@ -10,6 +10,7 @@
   "type": "module",
   "packageManager": "pnpm@10.6.3",
   "workspaces": [
+    "packages/release-it-config",
     "packages/prettier-config",
     "packages/tsconfig",
     "packages/tsup-config",

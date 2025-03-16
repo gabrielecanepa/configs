@@ -1,4 +1,4 @@
-import { type Config } from 'prettier'
+import { type Config as PrettierConfig } from 'prettier'
 import { type PluginOptions } from 'prettier-plugin-tailwindcss'
 
 import prettierConfig from '.'
@@ -10,8 +10,11 @@ const tailwindOptions: PluginOptions = {
   tailwindStylesheet: './src/app/globals.css',
 }
 
-export default {
+const tailwindConfig = {
   ...options,
   plugins: [...plugins, 'prettier-plugin-tailwindcss'],
   ...tailwindOptions,
-} satisfies Config
+} satisfies PrettierConfig
+
+export default tailwindConfig
+export type Config = typeof tailwindConfig

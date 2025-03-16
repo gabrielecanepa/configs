@@ -1,7 +1,7 @@
 {
   "extends": "@guello/tsconfig/base",
   "include": [".*.ts", "*.ts"],
-  "exclude": ["apps", "node_modules", "packages"],
+  "exclude": ["node_modules", "packages"],
   "compilerOptions": {
     "noEmit": true
   }

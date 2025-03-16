@@ -9,6 +9,9 @@ catalogs:
     '@release-it/bumper':
       specifier: ^7.0.2
       version: 7.0.2
+    '@types/node':
+      specifier: ^22.13.10
+      version: 22.13.10
     eslint:
       specifier: ^9.22.0
       version: 9.22.0
@@ -157,7 +160,7 @@ importers:
         specifier: ^6.11.3
         version: 6.11.3
       '@types/node':
-        specifier: ^22.13.10
+        specifier: 'catalog:'
         version: 22.13.10
       eslint:
         specifier: 'catalog:'
@@ -180,12 +183,37 @@ importers:
       '@release-it/bumper':
         specifier: 'catalog:'
         version: 7.0.2(release-it@18.1.2(@types/node@22.13.10)(typescript@5.8.2))
+      '@types/node':
+        specifier: 'catalog:'
+        version: 22.13.10
       prettier:
         specifier: 'catalog:'
         version: 3.5.3
       prettier-plugin-tailwindcss:
         specifier: ^0.6.11
         version: 0.6.11(prettier@3.5.3)
+      release-it:
+        specifier: 'catalog:'
+        version: 18.1.2(@types/node@22.13.10)(typescript@5.8.2)
+      tsup:
+        specifier: 'catalog:'
+        version: 8.4.0(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.2)
+      typescript:
+        specifier: 'catalog:'
+        version: 5.8.2
+
+  packages/release-it-config:
+    dependencies:
+      '@repo/utils':
+        specifier: workspace:^
+        version: link:../utils
+    devDependencies:
+      '@release-it/bumper':
+        specifier: 'catalog:'
+        version: 7.0.2(release-it@18.1.2(@types/node@22.13.10)(typescript@5.8.2))
+      prettier:
+        specifier: 'catalog:'
+        version: 3.5.3
       release-it:
         specifier: 'catalog:'
         version: 18.1.2(@types/node@22.13.10)(typescript@5.8.2)
@@ -228,6 +256,18 @@ importers:
       release-it:
         specifier: 'catalog:'
         version: 18.1.2(@types/node@22.13.10)(typescript@5.8.2)
+      tsup:
+        specifier: 'catalog:'
+        version: 8.4.0(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.2)
+      typescript:
+        specifier: 'catalog:'
+        version: 5.8.2
+
+  packages/utils:
+    devDependencies:
+      prettier:
+        specifier: 'catalog:'
+        version: 3.5.3
       tsup:
         specifier: 'catalog:'
         version: 8.4.0(jiti@2.4.2)(postcss@8.5.3)(typescript@5.8.2)
