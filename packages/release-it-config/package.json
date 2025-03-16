@@ -10,6 +10,9 @@
       "default": "./dist/index.js"
     }
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "prettier": "@guello/prettier-config",
   "scripts": {
     "build": "tsup",

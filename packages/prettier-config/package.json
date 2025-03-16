@@ -16,6 +16,9 @@
       "default": "./dist/tailwindcss.js"
     }
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "prettier": "./dist/index.cjs",
   "scripts": {
     "build": "tsup",
@@ -27,6 +30,7 @@
     "release": "release-it"
   },
   "devDependencies": {
+    "@guello/release-it-config": "workspace:^",
     "@release-it/bumper": "catalog:",
     "@types/node": "catalog:",
     "prettier": "catalog:",

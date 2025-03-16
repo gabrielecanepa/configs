@@ -12,6 +12,9 @@
     "react.json",
     "tsup.json"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "prettier": "@guello/prettier-config",
   "scripts": {
     "lint": "prettier --check .",
@@ -22,6 +25,7 @@
   },
   "devDependencies": {
     "@guello/prettier-config": "workspace:^",
+    "@guello/release-it-config": "workspace:^",
     "@release-it/bumper": "catalog:",
     "prettier": "catalog:",
     "release-it": "catalog:"

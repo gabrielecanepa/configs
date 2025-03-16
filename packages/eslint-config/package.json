@@ -10,6 +10,9 @@
       "default": "./dist/index.js"
     }
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "prettier": "@guello/prettier-config",
   "scripts": {
     "build": "tsup",
@@ -45,6 +48,7 @@
   "devDependencies": {
     "@guello/prettier-config": "workspace:^",
     "@guello/tsconfig": "workspace:^",
+    "@guello/release-it-config": "workspace:^",
     "@guello/tsup-config": "workspace:^",
     "@release-it/bumper": "catalog:",
     "@types/eslint-config-prettier": "^6.11.3",

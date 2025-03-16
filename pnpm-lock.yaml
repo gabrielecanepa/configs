@@ -50,6 +50,9 @@ importers:
       '@guello/prettier-config':
         specifier: workspace:^
         version: link:packages/prettier-config
+      '@guello/release-it-config':
+        specifier: workspace:^
+        version: link:packages/release-it-config
       '@guello/tsconfig':
         specifier: workspace:^
         version: link:packages/tsconfig
@@ -147,6 +150,9 @@ importers:
       '@guello/prettier-config':
         specifier: workspace:^
         version: link:../prettier-config
+      '@guello/release-it-config':
+        specifier: workspace:^
+        version: link:../release-it-config
       '@guello/tsconfig':
         specifier: workspace:^
         version: link:../tsconfig
@@ -180,6 +186,9 @@ importers:
 
   packages/prettier-config:
     devDependencies:
+      '@guello/release-it-config':
+        specifier: workspace:^
+        version: link:../release-it-config
       '@release-it/bumper':
         specifier: 'catalog:'
         version: 7.0.2(release-it@18.1.2(@types/node@22.13.10)(typescript@5.8.2))
@@ -229,6 +238,9 @@ importers:
       '@guello/prettier-config':
         specifier: workspace:^
         version: link:../prettier-config
+      '@guello/release-it-config':
+        specifier: workspace:^
+        version: link:../release-it-config
       '@release-it/bumper':
         specifier: 'catalog:'
         version: 7.0.2(release-it@18.1.2(@types/node@22.13.10)(typescript@5.8.2))
@@ -244,6 +256,9 @@ importers:
       '@guello/prettier-config':
         specifier: workspace:^
         version: link:../prettier-config
+      '@guello/release-it-config':
+        specifier: workspace:^
+        version: link:../release-it-config
       '@guello/tsconfig':
         specifier: workspace:^
         version: link:../tsconfig

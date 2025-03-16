@@ -39,6 +39,7 @@
     "@commitlint/types": "^19.8.0",
     "@guello/eslint-config": "workspace:^",
     "@guello/prettier-config": "workspace:^",
+    "@guello/release-it-config": "workspace:^",
     "@guello/tsconfig": "workspace:^",
     "@release-it/bumper": "catalog:",
     "@release-it/conventional-changelog": "^10.0.0",
