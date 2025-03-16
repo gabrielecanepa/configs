@@ -1,0 +1,9 @@
+{
+  "extends": "@guello/tsconfig/tsup",
+  "include": ["**/*.ts"],
+  "exclude": ["dist", "node_modules"],
+  "compilerOptions": {
+    "removeComments": false,
+    "types": ["node"]
+  }
+}

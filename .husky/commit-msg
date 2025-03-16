@@ -1,0 +1,12 @@
+#!/bin/sh
+
+commit=$(cat "$1")
+
+# Skip temporary commits
+case "$commit" in
+  \[tmp\]*|\#*)
+    exit 0
+    ;;
+esac
+
+commitlint --edit "$1"

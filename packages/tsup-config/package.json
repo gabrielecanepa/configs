@@ -1,0 +1,30 @@
+{
+  "name": "@guello/tsup-config",
+  "version": "0.0.0",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.js"
+    }
+  },
+  "prettier": "@guello/prettier-config",
+  "scripts": {
+    "build": "tsup",
+    "build:watch": "tsup --watch",
+    "typecheck": "tsc --noEmit && tsup --silent",
+    "lint": "prettier --check .",
+    "lint:fix": "prettier --write .",
+    "check": "pnpm typecheck && pnpm lint",
+    "check:fix": "pnpm typecheck && pnpm lint:fix"
+  },
+  "devDependencies": {
+    "@guello/prettier-config": "workspace:^",
+    "@guello/tsconfig": "workspace:^",
+    "prettier": "catalog:",
+    "tsup": "catalog:",
+    "typescript": "catalog:"
+  }
+}

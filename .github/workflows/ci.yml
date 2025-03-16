@@ -1,0 +1,42 @@
+name: CI
+permissions:
+  contents: read
+env:
+  SHELLCHECKJS_LOGGER_LEVEL: warn
+  TURBO_TELEMETRY_DISABLED: true
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+    types: [opened, reopened, synchronize]
+
+jobs:
+  ci:
+    name: CI
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+      - name: Install Corepack
+        run: |
+          npm install -g corepack@latest
+          echo ./node_modules/.bin >> $GITHUB_PATH
+          corepack enable
+          corepack install
+      - name: Install and build dependencies
+        run: |
+          pnpm install
+          pnpm run build
+      - name: Run commitlint on push
+        if: github.event_name == 'push'
+        run: commitlint --last --verbose
+      - name: Run commitlint on pull request
+        if: github.event_name == 'pull_request' && github.actor != 'dependabot[bot]'
+        run: commitlint --from ${{ github.event.pull_request.head.sha }}~${{ github.event.pull_request.commits }} --to ${{ github.event.pull_request.head.sha }} --verbose
+      - run: pnpm run check
