@@ -1,5 +1,3 @@
 import releaseItConfig from '@guello/release-it-config'
 
-export default releaseItConfig({
-  changelog: true,
-})
+export default releaseItConfig()

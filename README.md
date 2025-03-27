@@ -12,3 +12,4 @@ The following configs are available, and are designed to be used together:
 - [ESLint](packages/eslint-config)
 - [Prettier](packages/prettier-config)
 - [TypeScript](packages/tsconfig) and [tsup](packages/tsup-config)
+- [release-it](packages/release-it-config)

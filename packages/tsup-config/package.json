@@ -10,6 +10,9 @@
       "default": "./dist/index.js"
     }
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "prettier": "@guello/prettier-config",
   "scripts": {
     "build": "tsup",
@@ -19,12 +22,14 @@
     "lint:fix": "prettier --write .",
     "check": "pnpm typecheck && pnpm lint",
     "check:fix": "pnpm typecheck && pnpm lint:fix",
-    "release": "release-it"
+    "release": "dotenv release-it --config release-it.config.ts"
   },
   "devDependencies": {
     "@guello/prettier-config": "workspace:^",
+    "@guello/release-it-config": "workspace:^",
     "@guello/tsconfig": "workspace:^",
     "@release-it/bumper": "catalog:",
+    "dotenv-cli": "catalog:",
     "prettier": "catalog:",
     "release-it": "catalog:",
     "tsup": "catalog:",

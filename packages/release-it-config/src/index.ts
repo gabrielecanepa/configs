@@ -1,116 +1,90 @@
-import { type Config as ReleaseItConfig } from 'release-it'
-
 import { deepMerge } from '@repo/utils'
 
-interface Context {
-  changelog?: string
-  version: string
-}
-
-interface Config extends ReleaseItConfig {
-  github?: ReleaseItConfig['github'] & {
-    releaseNotes?: (context: Context) => string | undefined
-  }
-}
-
-interface Options {
-  /**
-   * Whether to generate a changelog file.
-   * @default false
-   */
-  changelog?: boolean
-  /**
-   * Whether to release to GitHub.
-   * @default true
-   */
-  github?: boolean
-  /**
-   * Whether to release to npm.
-   * @default false
-   */
-  npm?: boolean
-  /**
-   * Configuration overrides.
-   * @default true
-   */
-  overrides?: Config
-  /**
-   * Whether to run the build command before initializing release-it.
-   * @default true
-   */
-  runBuild?: boolean
-  /**
-   * Whether to run the check command before initializing release-it.
-   * @default true
-   */
-  runCheck?: boolean
-}
+import { Config, Context, Options } from './types'
+import { generateReleaseNotes } from './utils'
 
 const DEFAULT_OPTIONS: Options = {
+  bump: true,
   changelog: false,
+  config: {},
+  git: true,
   github: true,
+  name: undefined,
   npm: false,
-  overrides: {},
   runBuild: true,
   runCheck: true,
 }
 
+const DEFAULT_GIT_CONFIG: Config['git'] = {
+  commitMessage: 'chore: release v${version}',
+  push: true,
+  pushArgs: ['--follow-tags', '--no-verify'],
+  requireBranch: 'main',
+  requireCleanWorkingDir: false,
+  tagName: 'v${version}',
+}
+
+const DEFAULT_NPM_CONFIG: Config['npm'] = {
+  publish: true,
+  publishPath: 'dist',
+  skipChecks: true,
+}
+
 const releaseItConfig = (options: Options = {}) => {
-  const { changelog, github: githubOption, npm: npmOption, overrides, runBuild, runCheck } = { ...DEFAULT_OPTIONS, ...options }
+  const opts = { ...DEFAULT_OPTIONS, ...options }
 
-  const initCommands = []
-  if (runBuild) initCommands.push('pnpm build')
-  if (runCheck) initCommands.push('pnpm check')
+  const afterInit = []
+  if (opts.runBuild) afterInit.push('pnpm build')
+  if (opts.runCheck) afterInit.push('pnpm check')
 
-  const hooks =
-    initCommands.length > 0
-      ? {
-          'after:init': initCommands.join(' && '),
-        }
-      : {}
-
-  const github = !!githubOption
-    ? {
-        release: true,
-        releaseName: 'v${version}',
-        releaseNotes: (context: Context) => context.changelog?.split('\n').slice(1).join('\n'),
-      }
-    : {
-        release: false,
-      }
-
-  return deepMerge(
-    {
-      hooks,
-      git: {
-        commitMessage: 'chore: release v${version}',
-        push: true,
-        pushArgs: ['--follow-tags', '--no-verify'],
-        requireBranch: 'main',
-        tagName: 'v${version}',
-      },
-      github,
-      npm: {
-        publish: !!npmOption,
-      },
-      plugins: {
-        '@release-it/bumper': {},
-        ...(changelog
-          ? {
-              '@release-it/conventional-changelog': {
-                header: '# Changelog',
-                infile: 'CHANGELOG.md',
-                preset: {
-                  name: 'conventionalcommits',
-                },
+  const config: Config = {
+    hooks:
+      afterInit.length > 0
+        ? {
+            'after:init': afterInit.join(' && '),
+          }
+        : {},
+    git: opts.git ? DEFAULT_GIT_CONFIG : false,
+    github: opts.github
+      ? opts.name
+        ? {
+            releaseName: '${name}@${version}',
+            releaseNotes: generateReleaseNotes(opts.name),
+          }
+        : {
+            releaseName: 'v${version}',
+            releaseNotes: generateReleaseNotes(),
+          }
+      : {
+          release: false,
+        },
+    npm: opts.npm
+      ? DEFAULT_NPM_CONFIG
+      : {
+          publish: false,
+        },
+    plugins: {
+      ...(opts.bump
+        ? {
+            '@release-it/bumper': {},
+          }
+        : {}),
+      ...(opts.changelog
+        ? {
+            '@release-it/conventional-changelog': {
+              header: '# Changelog',
+              infile: 'CHANGELOG.md',
+              preset: {
+                name: 'conventionalcommits',
               },
-            }
-          : {}),
-      },
+            },
+          }
+        : {}),
     },
-    overrides || {},
-  )
+  }
+
+  return deepMerge(config, opts.config || {})
 }
 
 export default releaseItConfig
-export type { Config, Options }
+export type { Config, Context, Options }

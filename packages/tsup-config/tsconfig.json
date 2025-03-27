@@ -1,4 +1,4 @@
 {
-  "extends": "@guello/tsconfig/tsup",
+  "extends": "@guello/tsconfig",
   "include": ["src"]
 }

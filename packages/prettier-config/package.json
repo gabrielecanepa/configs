@@ -16,6 +16,9 @@
       "default": "./dist/tailwindcss.js"
     }
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "prettier": "./dist/index.cjs",
   "scripts": {
     "build": "tsup",
@@ -24,11 +27,13 @@
     "lint": "prettier --check .",
     "lint:fix": "prettier --write .",
     "check": "pnpm typecheck && pnpm lint",
-    "release": "release-it"
+    "release": "dotenv release-it --config release-it.config.ts"
   },
   "devDependencies": {
+    "@guello/release-it-config": "workspace:^",
     "@release-it/bumper": "catalog:",
     "@types/node": "catalog:",
+    "dotenv-cli": "catalog:",
     "prettier": "catalog:",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "release-it": "catalog:",

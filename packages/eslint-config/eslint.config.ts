@@ -1,6 +1,6 @@
-import jointConfig from './dist'
+import eslintConfig from './dist'
 
-export default jointConfig({
+export default eslintConfig({
   importGroups: [
     ['side-effect', 'side-effect-style'],
     'builtin',
