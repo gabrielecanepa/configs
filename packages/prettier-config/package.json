@@ -35,7 +35,7 @@
     "@types/node": "catalog:",
     "dotenv-cli": "catalog:",
     "prettier": "catalog:",
-    "prettier-plugin-tailwindcss": "^0.6.11",
+    "prettier-plugin-tailwindcss": "^0.6.12",
     "release-it": "catalog:",
     "tsup": "catalog:",
     "typescript": "catalog:"
