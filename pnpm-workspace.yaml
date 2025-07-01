@@ -2,12 +2,12 @@ packages:
   - packages/*
 
 catalog:
-  "@release-it/bumper": ^7.0.2
-  "@types/node": "^22.13.10"
+  "@release-it/bumper": ^7.0.5
+  "@types/node": "^24.0.8"
   dotenv-cli: ^8.0.0
-  eslint: ^9.22.0
-  prettier: ^3.5.3
-  release-it: ^18.1.2
+  eslint: ^9.30.0
+  prettier: ^3.6.2
+  release-it: ^19.0.3
   shellcheck: ^3.1.0
-  tsup: ^8.4.0
+  tsup: ^8.5.0
   typescript: ^5.8.2
